@@ -19,6 +19,7 @@
     <ClCompile Include="src\Template.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\format.h" />
     <ClInclude Include="src\MongoDispatcher.h" />
     <ClInclude Include="src\MongoRequest.h" />
     <ClInclude Include="src\MongoResponse.h" />
