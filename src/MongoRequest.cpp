@@ -52,6 +52,11 @@ bool Request::hasPost(char const * name) const
 }
 
 
+std::string Request::post(std::string const & name) const
+{
+	return post(name.c_str());
+}
+
 std::string Request::post(char const * name) const
 {
 	computePostBuffer();

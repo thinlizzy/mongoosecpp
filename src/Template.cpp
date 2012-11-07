@@ -4,7 +4,7 @@
 
 namespace Mongo {
 
-Template::Template(Response response, std::string basePath_): 
+Template::Template(Response & response, std::string basePath_): 
 	response(response),
 	basePath(basePath_)
 {

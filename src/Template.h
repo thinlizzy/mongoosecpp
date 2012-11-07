@@ -7,11 +7,11 @@
 namespace Mongo {
 
 class Template {
-	Response response;
+	Response & response;
 	std::string basePath;
 	std::string loadFileContents(char const * filename);
 public:
-	Template(Response response, std::string basePath = std::string());
+	Template(Response & response, std::string basePath = std::string());
 	void print(char const * filename);
 	void printf(char const * filename, ...);
 

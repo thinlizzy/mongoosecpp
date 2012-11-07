@@ -27,6 +27,7 @@ public:
 	std::string get(char const * name) const;
 	bool hasPost(char const * name) const;
 	std::string post(char const * name) const;
+	std::string post(std::string const & name) const;
 	char const * getURI_c() const;
 	std::string getURI() const;
 	char const * getQueryString_c() const;
