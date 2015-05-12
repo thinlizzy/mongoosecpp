@@ -85,7 +85,7 @@ std::string Dispatcher::getContentType(std::string const & filename) const
 	if( p >= filename.length() ) return "text/plain";
 
 	auto ext = filename.substr(p+1);
-	std::transform(ext.begin(),ext.end(),ext.begin(),&std::tolower);
+	std::transform(ext.begin(),ext.end(),ext.begin(),&::tolower);
 	// TODO use a map
 	if( ext == "htm" ) ext = "html";
 	if( ext == "jpg" ) ext = "jpeg";

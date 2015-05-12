@@ -114,7 +114,7 @@ void Request::computePostBuffer() const
 std::string Request::getPath() const
 {
 	computePathPos();
-	return std::string(request_info->uri,pathPos);
+	return std::string(static_cast<char const *>(request_info->uri),pathPos);
 }
 
 std::string Request::getResource() const

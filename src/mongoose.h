@@ -22,6 +22,7 @@
 #define  MONGOOSE_HEADER_INCLUDED
 
 #include <stddef.h>
+#include <cstdarg>
 
 #ifdef __cplusplus
 extern "C" {
