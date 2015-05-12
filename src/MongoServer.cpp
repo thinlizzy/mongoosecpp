@@ -5,18 +5,23 @@
 
 namespace Mongo {
 
+void * wrapReturn(bool result) {
+  static char * emptyString = "";
+  return result ? emptyString : nullptr;
+}
+
 static void * CallbackWrapper(enum ::mg_event event, struct ::mg_connection * conn, const struct ::mg_request_info * request_info)
 {
 	auto server = reinterpret_cast<Server const *>(request_info->user_data);
 	Request req(request_info,conn);
 	Response resp(conn);
 	switch(event) {
-		case MG_NEW_REQUEST: return server->cbStart(req,resp) ? "" : 0;
-		case MG_HTTP_ERROR: return server->cbError(req,resp) ? "" : 0;
-		case MG_EVENT_LOG: return server->cbLog(req,resp) ? "" : 0;
-		case MG_INIT_SSL: return server->cbInitSSL(req,resp) ? "" : 0;
-		case MG_REQUEST_COMPLETE: return server->cbEnd(req,resp) ? "" : 0;
-		default: return 0;
+		case MG_NEW_REQUEST: return wrapReturn(server->cbStart(req,resp));
+		case MG_HTTP_ERROR: return wrapReturn(server->cbError(req,resp));
+		case MG_EVENT_LOG: return wrapReturn(server->cbLog(req,resp));
+		case MG_INIT_SSL: return wrapReturn(server->cbInitSSL(req,resp));
+		case MG_REQUEST_COMPLETE: return wrapReturn(server->cbEnd(req,resp));
+		default: return nullptr;
 	}
 }
 
