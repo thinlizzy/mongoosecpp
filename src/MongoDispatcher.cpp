@@ -66,6 +66,7 @@ bool Dispatcher::dispatch(Request request, Response response)
 
 bool Dispatcher::dispatchStatic(Request request, Response response, std::string const & localPath)
 {
+	// TODO sanitize request.getResource() to disallow going back into the path
 	return dispatchFile(request,response,localPath + '/' + request.getResource());
 }
 

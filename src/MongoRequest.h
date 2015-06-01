@@ -34,6 +34,7 @@ public:
 	std::string getQueryString() const;
 	std::string getPath() const;
 	std::string getResource() const;
+	std::vector<char> & getPostData() const;  // TODO make it read chunks
 	Method getMethod() const;
 	char const * getMethod_c() const;
 	char const * getHeader_c(char const * name) const;

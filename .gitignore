@@ -7,3 +7,6 @@ Release/
 *.suo
 debug-*/
 release-*/
+.cproject
+.project
+.settings

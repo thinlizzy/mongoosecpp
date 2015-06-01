@@ -104,12 +104,19 @@ void Request::computePathPos() const
 void Request::computePostBuffer() const
 {
 	if( ! postBuffer.empty() ) return;
-	if( strcmp(getContentType_c(),"application/x-www-form-urlencoded") != 0 ) return;
+	// TODO remove the comment below once getPostData() supports reading chunks
+	// if( strcmp(getContentType_c(),"application/x-www-form-urlencoded") != 0 ) return;
 
 	postBuffer.resize(getContentLength());
 	mg_read(conn,&postBuffer[0],postBuffer.size());
 }
 
+// TODO make it read chunks
+std::vector<char> & Request::getPostData() const
+{
+	computePostBuffer();
+	return postBuffer;
+}
 
 std::string Request::getPath() const
 {
